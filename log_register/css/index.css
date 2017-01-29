@@ -1,0 +1,35 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+}
+#head{
+	padding-left: 30px;
+}
+#head .login,.register{
+	float: left;
+	cursor: pointer;
+	width: 140px;
+	height: 40px;
+	color:block;
+	text-align: center;
+	font: 20px/40px '';
+	border: 1px solid gray;
+}
+.login{
+	background: greenyellow;
+}
+#_form{
+	position: absolute;
+	left: 0;
+	top:60px;
+}
+#login{
+	width: 130px;
+	height: 40px;
+	background: blue;
+	border-radius: 10px;
+	border:none;
+	outline: none;
+	margin:20px 0 0 70px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>angular用户管理系统</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script src='js/plugins/angular.js'></script>
+	<!-- controller 控制层 -->
+	<script src='js/controller.js'></script>
+	<!-- filter 过滤层 -->
+	<script src='js/filter.js'></script>
+	<!-- service 服务层(数据层) -->
+	<script src='js/service.js'></script>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body ng-controller='indexCtrl'>
+	<div id="head">
+		<div class="login">登录</div>
+		<div class="register">注册</div>
+	</div>
+	<div id="_form">
+		<form name='myForm' novalidate>
+			<div style="margin-bottom: 10px;">
+				<label for="userName">账号:</label>
+				<!-- 账号的规则 不为空 6~16位 -->
+				<input id='userName' ng-model='userName' ng-required='true' ng-minlength='6' ng-pattern='/^\w+$/' name='userName' ng-maxlength='16' type="text">
+				<!--invalid 验证未通过 $valid验证通过 -->
+				<div ng-if='(myForm.userName.$invalid && myForm.userName.$dirty)||state'>
+					<p ng-if='myForm.userName.$error.minlength'>用户名长度不能小于6位</p>
+					<p ng-if='myForm.userName.$error.maxlength'>用户名长度不能超过16位</p>
+					<p ng-if='myForm.userName.$error.required'>用户名不能为空</p>
+					<p ng-if='myForm.userName.$error.pattern'>只能输入数字、字母、下划线</p>
+				</div>
+			</div>
+			<div>
+				<label for="userPass">密码:</label>
+				<input id='userPass' ng-model='userPass' type="password" ng-required='true' ng-minlength='6' name='userPass' ng-maxlength='16'>
+				<div ng-if='(myForm.userPass.$invalid && myForm.userPass.$dirty)||state'>
+					<p ng-if='myForm.userPass.$error.minlength'>密码长度不能小于6位</p>
+					<p ng-if='myForm.userPass.$error.maxlength'>密码长度不能超过16位</p>
+					<p ng-if='myForm.userPass.$error.required'>密码不能为空</p>
+					<p ng-if='myForm.userPass.$error.pattern'>只能输入数字</p>
+				</div>
+			</div>
+			<p>
+				<button ng-click='login()' id="login">登录</button>
+				<!--<button ng-click='register()'>注册</button>-->
+			</p>
+		</form>
+	</div>
+</body>
+</html>
